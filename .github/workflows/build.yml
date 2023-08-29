@@ -43,5 +43,5 @@ jobs:
         with:
           url: 'http://54.224.4.9:8080/webhook/'
           method: 'POST'
-          customHeaders: '{Content-Type: application/json", X-GitHub-Event: workflow_run}'
+          customHeaders: '{Content-Type: application/json, X-GitHub-Event: workflow_run}'
           data: '{"action":"requested","workflow_run":{"status":"queued"},"repository":{"name":"readRepo"}}'
