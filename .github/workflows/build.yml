@@ -39,5 +39,5 @@ jobs:
           echo $PWD
 
       - name: webhook call
-        run:
+        run: |
           curl -X POST -H "Content-Type: application/json" -H "X-GitHub-Event: workflow_run" -d '{"action":"requested","workflow_run":{"status":"queued"},"repository":{"name":"readRepo"}}' http://34.204.86.35:8080/webhook
