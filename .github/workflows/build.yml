@@ -37,7 +37,11 @@ jobs:
       - name: The current paths
         run:
           echo $PWD
-
-      - name: webhook call
-        run: |
-          curl -s -o /dev/null -X POST -H "Content-Type: application/json" -H "X-GitHub-Event: workflow_run" -d '{"action":"requested","workflow_run":{"status":"queued"},"repository":{"name":"readRepo"}}' http://54.224.4.9:8080/webhook
+      
+      - name: Deploy Stage
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'http://54.224.4.9:8080/webhook/'
+          method: 'POST'
+          customHeaders: '{Content-Type: application/json", X-GitHub-Event: workflow_run}'
+          data: '{"action":"requested","workflow_run":{"status":"queued"},"repository":{"name":"readRepo"}}'
